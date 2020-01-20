@@ -1,0 +1,6 @@
+Flask<1
+pyjade<5
+praw
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
