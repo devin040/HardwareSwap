@@ -7,11 +7,14 @@ from flask import render_template, request, redirect, url_for
 from RedditPy import app
 import json
 import RedditPy.hwswap
+from flask_sqlalchemy import SQLAlchemy
+from flask_user import login_required, UserManager, UserMixin
 
 searchterms = "What You're Tracking"
 searchtermsobj = { "arr": ["570", "580"]}
 tsearches = []
 tsearches.append("570")
+
 
 @app.route('/')
 @app.route('/home')
@@ -26,6 +29,7 @@ def home():
     )
 
 @app.route('/contact')
+@login_required
 def contact():
     """Renders the contact page."""
     return render_template(
