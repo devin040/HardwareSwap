@@ -10,13 +10,15 @@ block content
       a.btn.btn-primary.btn-large(href='http://flask.pocoo.org/') Learn more &raquo;
 
   .row
-    div
-     form(action='/addtolist', method='post')
-      input( 
-      type = 'text'
-      name = 'searchterm'
-      )
-      input(type='submit', value="Add", data-transition= "fade")
+    .col-md-12
+        
+         form(action='/addtolist', method='post')
+          input( 
+          type = 'text'
+          name = 'searchterm'
+          style='max-width: 100%'
+          )
+          input(type='submit', value="Add", data-transition= "fade", style= 'max-width: 100%')
   .row
     - var ob = searches
     h1 What You're Tracking
