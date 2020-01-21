@@ -4,7 +4,8 @@ The flask application package.
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_user import UserManager, UserMixin
+from flask_user import UserManager, UserMixin, current_user
+
 app = Flask(__name__)
 app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 db = SQLAlchemy(app)
@@ -42,6 +43,13 @@ class User(db.Model, UserMixin):
     # User information
     first_name = db.Column(db.String(100, collation='NOCASE'), nullable=False, server_default='')
     last_name = db.Column(db.String(100, collation='NOCASE'), nullable=False, server_default='')
+
+class SearchTerm(db.Model):
+    __tablename__ = 'searchterms'
+    id = db.Column(db.Integer, primary_key=True)
+    term = db.Column(db.String(100), nullable=False)
+    username = db.Column(db.String(100, collation='NOCASE'), db.ForeignKey('users.username'), nullable=False)
+    user = db.relationship('User', backref=db.backref('searchterms', lazy=True))
 
 # Create all database tables
 db.create_all()

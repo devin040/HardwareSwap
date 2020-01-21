@@ -46,6 +46,7 @@
     <Content Include="RedditPy\credentials.json">
       <Publish>True</Publish>
     </Content>
+    <Content Include="RedditPy\quickstart_app.sqlite" />
     <Content Include="RedditPy\static\content\credentials2.json">
       <Publish>True</Publish>
     </Content>
